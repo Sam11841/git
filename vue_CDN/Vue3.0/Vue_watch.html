@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/vue@next"></script>
+
+    </head>
+    <body>
+        <div id="exp" >
+            <input type="text" v-model="prime_num">
+            <h2>{{message}}</h2>
+        </div>
+
+        <script>
+            const app={
+                data(){
+                    return {
+                        prime_num:2,
+                        message :"是質數"
+                    }
+                },
+                watch:{
+                    prime_num:function(val){
+                        this.prime_num=val;
+                        for(var i=2;i<this.prime_num;i++){
+                            if(this.prime_num % i==0){
+                                this.message="不是質數";
+                                break;
+                            }else{
+                                this.message="是質數";
+                            }
+                       }
+                    }
+                }
+            }
+            vm=Vue.createApp(app).mount('#exp')
+        </script>
+    </body>
+</html>

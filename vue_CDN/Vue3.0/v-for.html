@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/vue@next"></script>
+       
+    </head>
+    <body>
+        <div id="exp" >
+            <span v-for="n in 10">{{n}}</span><br>
+            <span v-for="i in Mynum">{{i}}</span><br><!--自訂義過濾方法-->
+            <ol>
+                <li v-for="ary in arys">
+                    {{ary.text}}
+                </li>
+            </ol>
+            <ul>
+                <template v-for="ary in arys"><!--使用template標籤-->
+                  <li>{{ary.text}}</li>
+                  <li>--------------</li>
+                </template>
+              </ul>
+            <ol>
+                <li v-for="(obj,index) in object"><!--index參數為索引值 使用index時會將key value一起帶出-->
+                    {{index}}-{{obj}}
+                    
+                </li>
+            </ol>
+            <ol>
+                <li v-for="(value,key,index) in object">
+                    {{index}}-{{key}}-{{value}}<br>
+                </li>
+            </ol>
+            <div v-if="list.length !== 0" v-for="item in list"><!--Vue2觀念:"v-for必須有元素才會觸發v-if" Vue3正常顯示nothing....-->
+                <div>{{item.name}}</div>
+              </div>
+              <div v-else>
+                Nothing could show.
+            </div>
+            
+        <script>
+            const app ={
+                data(){
+                    return{
+                        arys:[
+                            {text:'Google'},
+                            {text:'Apple'},
+                            {text:'Amazon'},
+                        ],
+                        object:{
+                            name:'T-shirt',size:'L',sex:'Male',
+                        },
+                        num:[1,2,3,4,5],
+                        list:[],
+
+                        selOption: "Runoob",
+           
+
+                    }
+                },
+                computed:{
+                    Mynum(){
+                        return this.num.filter(number=> number % 2==0)
+                    }
+                }
+            }
+            Vue.createApp(app).mount('#exp')
+        </script>
+    </body>
+</html>

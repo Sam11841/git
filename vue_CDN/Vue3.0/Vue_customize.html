@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/vue@next"></script>
+    </head>
+    <body>
+        <div id="exp" class="demo">
+          <btn-counter></btn-counter>
+        </div>
+
+        <script>
+            const app=Vue.createApp({})
+            app.component('btn-counter',{
+                data(){
+                    return{
+                        count:0
+                    }
+                },
+                template: `
+                <button @click="count++">
+                    點了 {{ count }} 次！
+                </button>`
+           
+            })
+           app.mount('#exp')
+        </script>
+    </body>
+</html>

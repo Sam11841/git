@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/vue@next"></script>
+
+    </head>
+    <body>
+        <div id="exp" >
+          {{5+5}}<br>
+          {{ok ? 'yes':'no'}}<br><!--只允許表達式或變數-->
+          {{ message.split('').reverse().join('') }}<br>
+          <div v-bind:id="'list-' + id">菜鳥教程</div>
+        </div>
+
+        <script>
+            const app ={
+                data(){
+                    return{
+                        ok: true,
+                        message: 'RUNOOB!!',
+                        id: 1
+                    }
+                }
+            }
+            Vue.createApp(app).mount('#exp')
+        </script>
+    </body>
+</html>

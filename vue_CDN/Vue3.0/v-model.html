@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/vue@next"></script>
+
+    </head>
+    <body>
+        <div id="exp" >
+            <p>{{message}}</p>
+            <input v-model="message">
+   
+        </div>
+
+        <script>
+            const app ={
+                data(){
+                    return{
+                       message:'Hello!'
+                    }
+                }
+            }
+            Vue.createApp(app).mount('#exp')
+        </script>
+    </body>
+</html>

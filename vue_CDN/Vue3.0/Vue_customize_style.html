@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/vue@next"></script>
+        <style>
+            .classA{
+                color: red;
+                font-size: 30pt;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="exp" >
+           <mydiv class="classA"></mydiv>
+        </div>
+
+        <script>
+            const app=Vue.createApp({})
+
+            app.component('mydiv',{
+                template:
+                `<p :class="$attrs.class">MyStyle</p>
+                <span>這是一個span</span>`
+            })
+            app.mount('#exp')
+        </script>
+    </body>
+</html>

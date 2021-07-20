@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/vue@next"></script>
+      
+    </head>
+    <body>
+        <div id="exp" class="demo">
+           <site-info v-for="site in sites" 
+           :id="site.id" 
+           :title="site.title">
+        </site-info>
+        </div>
+
+        <script>
+            const Site={
+                data(){
+                    return{
+                        sites:[
+                            {id:1,title:'Google'},
+                            {id:2,title:'Yahoo'},
+                            {id:3,title:'MSN'}
+                        ]
+                    } 
+                }
+            }
+           const app =Vue.createApp(Site)
+           app.component('site-info',{
+               props:['id','title'],
+               template:`<h4>{{id}} - {{title}}</h4>`
+           })
+           app.mount('#exp') 
+        </script>
+    </body>
+</html>

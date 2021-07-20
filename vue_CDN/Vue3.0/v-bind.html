@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/vue@next"></script>
+        <style>
+            .Class1{
+                background-color: darkslategrey;
+                color: #FFF;
+            }
+            .active{
+                width: 100px;
+                height: 100px;
+                background-color: sienna;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="exp" class="demo">
+           <label for="r1">修改顏色</label><input type="checkbox" v-model="use" id="r1">
+            <br>
+            <div v-bind:class="{Class1:use}">
+                v-bind:class指令
+            </div><br>
+            <div :Class="{'active' : show}"><!--縮寫-->
+        </div>
+
+        <script>
+            const app ={
+                data(){
+                    return{
+                        use:false,
+                        show :true
+                    }
+                }
+            }
+            Vue.createApp(app).mount('#exp')
+        </script>
+    </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/vue@next"></script>
+
+    </head>
+    <body>
+        <div id="exp" >
+            <p>message: {{message}}</p>
+            <p>computed_now: {{computed_now}}</p>
+            <p>methods_now: {{methods_now()}}</p>
+        </div>
+
+        <script>
+            const app ={
+                data(){
+                    return{
+                       message:'Hello!'
+                    }
+                },
+                computed:{
+                    computed_now: function(){
+
+                        return Date.now()
+                    }
+                },
+                methods:{
+                    methods_now: function(){
+
+                        return Date.now()
+                    }
+                }
+            }
+            const vm=Vue.createApp(app).mount('#exp')
+            /*
+            當 console 輸入 vm.$data.message=9
+            改變 message 時，
+            由於 computed_now 這個計算屬性沒有用到任何相依的資料，
+            因此不重新計算取值；但 methods_now 是方法，無論是否有相依，
+            只要有變動都會重新計算。
+            
+            因此
+            需要每次更新，就用 method
+            在意效能，就用 computed
+            */
+        </script>
+    </body>
+</html>

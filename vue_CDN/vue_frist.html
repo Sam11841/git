@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    </head>
+    <body>
+        <div id="vue_det">
+            <h1>site: {{site}}</h1><br>
+            <h1>url: {{url}}</h1><br>
+            <h1>{{details()}}</h1><br>
+        </div>
+          <script type="text/javascript">
+          var vm= new Vue({
+            el:'#vue_det',
+            data:{
+                site: "GOOGLE",
+                url: "www.google.com",
+                alexa:"10000"
+            },
+            methods:{
+                details: function(){
+                    return this.site+" Hello"
+                }
+            }
+          })          
+          </script>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/vue@next"></script>
+       
+    </head>
+    <body>
+        <div id="exp" >
+  
+        </div>
+
+        <script>
+            const myMixn ={
+                data(){
+                    return{
+                        meassage:'Hello',
+                        foo:'Vue',
+                       
+                    }
+                }
+            }
+            const app=Vue.createApp({
+                mixns:[myMixn],
+                data(){
+                    return{
+                        message:'bye',//注意後蓋前 
+                        bar:'def',
+                       
+                    }
+                },
+                created(){
+                    document.write(JSON.stringify(this.$data))
+                }
+            })
+           app.mount('#exp')
+        </script>
+    </body>
+</html>

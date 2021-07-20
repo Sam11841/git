@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/vue@next"></script>
+
+    </head>
+    <body>
+        <div id="exp" >
+            <!--            
+            <input type="button" v-on:click="counter +=1"value="+1">
+            -->
+            <!--<input type="button" @click="counter +=1"value="+1">-->
+            <button @click="counter +=1">+1</button>
+            <button @click="totals">+1</button><!--也可以呼叫method-->
+            <p>總共按了{{counter}}次</p>
+            <p>total 總共按了{{total}}次</p><!--也可以呼叫method-->
+            <button @click="say(`你好`)">說你好</button><!--也可以呼叫method-->
+        </div>
+
+        <script>
+            const app ={
+                data(){
+                    return{
+                        counter:0,
+                        total:0
+                    }
+                },
+                methods:{
+                    totals(event){
+                        
+                        this.total+=1;
+                        return{
+                            total:this.total
+                        }
+                    },
+                    say(message){
+                        alert(message);
+                    }
+                }
+            }
+            Vue.createApp(app).mount('#exp')
+        </script>
+    </body>
+</html>

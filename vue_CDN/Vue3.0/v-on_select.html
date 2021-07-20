@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/vue@next"></script>
+
+    </head>
+    <body>
+        <div id="exp" >
+           <select v-model="selected">
+               <option v-for="option in options" :value="option.value">
+                   {{option.text}}
+               </option>
+           </select>
+            <span>選中值為: {{selected}}</span>
+        </div>
+
+        <script>
+            const app ={
+                data(){
+                    return{
+                        selected:'www.google.com',
+                        options:[
+                            {text:'Google',value:'www.google.com'},
+                            {text:'FB',value:'www.Facebook.com'},
+                            {text:'Amazon',value:'www.Amazon.com'}
+                        ]
+                    }   
+                }
+            }
+            Vue.createApp(app).mount('#exp')
+        </script>
+    </body>
+</html>

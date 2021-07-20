@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/vue@next"></script>
+
+    </head>
+    <body>
+        <div id="exp" class="demo">
+            <p>插入html語法:{{rawhtml}}</p>
+            <p>使用v-html語法:<span v-html="rawhtml"></span></p>
+        </div>
+
+        <script>
+            const RenderHtmlApp ={
+                data(){
+                    return{
+                      rawhtml: '<span style="color :blue">BLUE</span>'
+                    }
+                }
+            }
+            Vue.createApp(RenderHtmlApp).mount('#exp')
+        </script>
+    </body>
+</html>

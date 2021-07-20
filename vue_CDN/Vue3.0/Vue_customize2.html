@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/vue@next"></script>
+    </head>
+    <body>
+        <div id="exp">
+            <custoa></custoa><!--標籤都要小寫否則錯誤-->
+            <custob></custob>
+        </div>
+
+        <script>
+            var custA={
+                template:`<h1>AAA</h1><br>`
+            }
+            var custB={
+                template:`<h1>BBB</h1>`
+            }
+            const app = Vue.createApp({
+                components: {
+                    'custoa': custA,
+                    'custob': custB
+                }
+            })
+           
+            app.mount('#exp')
+        </script>
+    </body>
+</html>

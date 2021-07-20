@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/vue@next"></script>
+        <style>
+            .static{
+                width: 100px;
+                height: 100px;
+                
+            }
+            .active1{
+                background-color: red;
+            }
+            .active2{
+                background-color: green;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="exp" >
+            <!--<div class="static" :class="{'active1' : show1, 'active2' : show2}"></div>-->
+            <div class="static" :class="show"></div>
+            <div :style="{color:activecolor, fontSize:Fontsize + 'pt'}">VueStyle</div><!--v-bind:style 縮寫:style-->
+            <div :style="styleObj">VueStyle</div><!--v-bind:style 縮寫:style-->
+            <div :style="[basestyles,overridingstyle]">VueStyle</div><!--v-bind:style 縮寫:style-->
+        </div>
+
+        <script>
+            const app ={
+                data(){
+                    return{
+                        show1 :false,
+                        show2 :true,//兩個true會被show2蓋show1
+                        activecolor:'blue',
+                        Fontsize:30,
+                        styleObj:{
+                            color:"red",
+                            "font-size": '30pt'
+                            //fontSize:"30pt
+
+                            /*
+                            v-bind:style 的對象語法
+                            十分直觀——看著非常像 CSS，但其實是一個 JavaScript 對象。
+                             CSS property 名可以用駝峰式 (camelCase) 或短橫線分隔 
+                            (kebab-case，記得用引號括起來) 來命名
+                            */
+                        },
+                        basestyles:{
+                            color:"green",
+                           fontSize:"30pt"
+                        },
+                        overridingstyle:{
+                            'font-weight':'bold'
+                        }
+                    }
+                },computed:{//class="static"使用v-bind:style 綁定 show方法
+                    show(){
+                        return{
+                            active1:this.show1,
+                            active2:this.show2,
+                        }
+                    }
+                }
+            }
+            Vue.createApp(app).mount('#exp')
+        </script>
+    </body>
+</html>

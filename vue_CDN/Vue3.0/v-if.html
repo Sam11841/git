@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/vue@next"></script>
+
+    </head>
+    <body>
+        <div id="exp" >
+            <template v-if="seen">
+                <h1>phone</h1>
+                <p>apple</p>
+                <p>samsung</p>
+                <p>sony</p>
+            </template>
+        </div>
+        <div id="ex" >
+            <div v-if="type === 'A'">
+                A
+           </div>
+           <div v-else-if="type === 'B'">
+             B
+           </div>
+           <div v-else-if="type === 'C'">
+             C
+           </div>
+           <div v-else>
+             Not A/B/C
+           </div>
+
+        </div>
+
+        <script>
+            const app ={
+                data(){
+                    return{
+                        seen: true//false 看不到
+                    }
+                }
+            }
+            Vue.createApp(app).mount('#exp')
+            const ex ={
+                data(){
+                    return{
+                        type:"C"
+                    }
+                }
+            }
+            Vue.createApp(ex).mount('#ex')
+        </script>
+    </body>
+</html>

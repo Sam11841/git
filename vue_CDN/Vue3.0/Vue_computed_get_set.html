@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/vue@next"></script>
+
+    </head>
+    <body>
+        <div id="exp" >
+          
+        </div>
+
+        <script>
+            const app ={
+                data(){
+                    return{
+                      name:'google',
+                      url:'http://www.google.com'
+                    }
+                },
+                computed:{
+                    site:{
+                        get:function(){
+                            return this.name+" "+this.url;
+                        },
+                        set:function(newvalue){
+                            var name=newvalue.split(' ');
+                            this.name=name[0];
+                            this.url=name[1]
+                        }
+                    }
+                }
+            }
+            var vm= Vue.createApp(app).mount('#exp')
+            document.write('name: ' + vm.name);
+            document.write('<br>');
+            document.write('url: ' + vm.url);
+            document.write('<br>------ 更新 ------<br>');
+            vm.site = 'Yahoo https://www.yahoo.com.tw';
+            document.write('name: ' + vm.name);
+            document.write('<br>');
+            document.write('url: ' + vm.url);
+        </script>
+    </body>
+</html>

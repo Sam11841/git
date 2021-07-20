@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/vue@next"></script>
+
+    </head>
+    <body>
+        <div id="exp" >
+            <input type="radio" id="google" value="Google" v-model="checked">
+            <label for="google">Google</label>
+            <input type="radio" id="Facebook" value="Facebook" v-model="checked">
+            <label for="Facebook">Facebook</label><br>
+            <span>選中值為: {{checked}}</span>
+        </div>
+
+        <script>
+            const app ={
+                data(){
+                    return{
+                        checked:'facebook'
+                    }   
+                }
+            }
+            Vue.createApp(app).mount('#exp')
+        </script>
+    </body>
+</html>
