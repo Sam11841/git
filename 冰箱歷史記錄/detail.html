@@ -1,0 +1,109 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="./js/element.js"></script>
+    <script src="./js/detail.js"></script>
+    <script>
+        window.onload=function(){
+            navbar_show();
+            data_show();
+        }
+    </script>
+    <style>
+        .icon{
+            width:32px; 
+            height: 32px;
+            margin-right: 16px;
+            cursor: pointer;
+        }
+        .data{
+            text-align: center;
+            font-size: 20pt;
+        }
+    </style>
+</head>
+<body>
+    <div id="draw_nav">
+        <navbar></navbar>
+    </div>
+    <div></div>
+    <div id="datail" class="data" >
+        <div v-if="action=='detail'">
+            <img :src="picture">
+            <p>食物名稱: {{Name}}</p>
+            <p>單位: {{Unit}}</p>
+            <p>冷藏方式: {{Freeze}}</p>
+            <p>類別: {{Class}}</p>
+            <p>置入日期: {{Input_Date}}</p>
+            <p>保存期限: {{Vali_Date}}</p>
+            <p>保存期限剩餘: {{Limit}}</p>
+            <div style="text-align: right;">
+                <a :href="edit_href"><img src="./icon/edit.png"  class="icon"></a>
+                <a :href="del_href"><img src="./icon/trash.png"  class="icon"></a>
+            </div>
+        </div>
+        <div v-if="action=='edit'"  class="data">
+            <img id="img_view" :src="picture" style="height: 320px; width: 400px;">
+            <form role="form" action="update.php" method="POST" enctype="multipart/form-data"> 
+                <div class="form-group">
+                    <label for="food_name">食物名稱</label><br>
+                    <input type="text"  id="name" name="name" 
+                        v-model="Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="food_name">單位</label><br>
+                    <input type="text"  id="unit" name="unit" 
+                        v-model="Unit" required>
+                </div> 
+                <div class="form-group">
+                    <input type="radio" value="冷藏" name="freeze" v-model="Freeze" required>冷藏
+                    <input type="radio" value="冷凍" name="freeze" v-model="Freeze" required>冷凍
+                 </div>
+                 <div class="form-group" >
+                     <select name="class" v-model="Class" required>
+                         <option value="">請選擇食物類別</option>
+                         <option value="蛋類">蛋類</option>
+                         <option value="蔬菜類">蔬菜類</option>
+                         <option value="水果類">水果類</option>
+                         <option value="肉類" >肉類</option>
+                         <option value="飲料類">飲料類</option>
+                         <option value="澱粉類">澱粉類</option>
+                         <option value="乳製品類">乳製品類</option>
+                         <option value="熟食類">熟食類</option>
+                         <option value="冷凍食品類">冷凍食品類</option>
+                         <option value="其他類">其他類</option>
+                     </select>
+                 </div>
+                <div class="form-group">
+                    <label for="food_name">置入日期</label><br>
+                    <input type="date"  id="input_date" name="input_date" 
+                        v-model="Input_Date" required>
+                </div> 
+                <div class="form-group">
+                    <label for="food_name">保存期限</label><br>
+                    <input type="date"  id="vali_date" name="vali_date" 
+                        v-model="Vali_Date" required>
+                </div>
+                <div class="form-group">
+                    <label for="upload_img">插入圖片</label>
+                    <input onchange="chg_img()" type="file" id="upload_img" name="upload_img" style="margin:auto; text-align: center; " >
+                </div>
+                <div class="form-group">
+                    <input type="hidden"  id="fid" name="fid" 
+                        v-model="ID" >
+                    <input type="hidden"  id="before_img" name="before_img" 
+                        v-model="picture" >    
+                </div> 
+                <button type="submit" class="btn btn-default" name="act" value="index">提交並返回首頁</button>
+            </form>    
+            
+        </div>
+    </div>
+    
+</body>
+</html>

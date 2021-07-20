@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./js/element.js"></script>
+    <script src="./js/expired.js"></script>
+    <script>
+        window.onload=function(){
+            navbar_show();
+            detail();
+        }
+    </script>
+</head>
+<body ><!--onload vue-->
+    <div id="draw_nav">
+        <navbar></navbar>
+    </div>
+    <table class="table table-hover" id="food_table">
+        <caption>所有被登記的食物 </caption>
+        <thead>
+            <tr>
+                <th>食物名稱</th>
+                <th>單位</th>
+                <th>冷藏方式</th>
+                <th>類別</th>
+                <th>置入日期</th>
+                <th>保存期限</th>
+                <th>刪除日期</th>
+            </tr>
+        </thead>
+        <tbody>            
+            <tr v-for="(food,i) in food_ary " :key="i" >
+                <td>{{food.Name}}</td>
+                <td>{{food.Unit}}</td>
+                <td>{{food.Freeze}}</td>
+                <td>{{food.Class}}</td>
+                <td>{{food.Input_Date}}</td>
+                <td>{{food.Vali_Date}}</td>
+                <td>{{food.Delete_Date}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="7" style="text-align: center;">
+                    <ul class="pagination"  >
+                        <li><a @click="food_data(1)" >&laquo;</a></li>
+                        <li v-for="n in page_count" :class="[(now_page == n)? page_on : '' ]"><a @click="food_data(n)" >{{n}}</a></li>
+                        <li><a @click="food_data(page_count)" >&raquo;</a></li>
+                    </ul>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>
