@@ -72,7 +72,8 @@
                 <td>{{food.Input_Date}}</td>
                 <td >{{today}}</td>
                 <td>{{food.Vali_Date}}</td>
-                <td>{{food.Dead_Line}}天</td>
+                <td v-if="food.Dead_Line=='已過期'">{{food.Dead_Line}}</td>
+                <td v-else>{{food.Dead_Line}}天</td>
                 <td >
                     <a @click="food_act(food.ID,'detail')" ><img src="./icon/detail.png" class="icon" >
                     <a @click="food_act(food.ID,'edit')"><img src="./icon/edit.png"  class="icon">

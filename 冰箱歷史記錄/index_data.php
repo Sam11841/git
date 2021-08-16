@@ -44,8 +44,12 @@ if(empty($result)){
     $result=json_encode($result);
 }else{
     for($i=0;$i<count($result);$i++){
-        
+
+        //echo $result[$i]["Vali_Date"]."-".strtotime("now")." ";
+
         $deadline=strtotime($result[$i]["Vali_Date"])-strtotime("now");
+
+        
         if($deadline<=0){
             $result[$i]["Dead_Line"]="已過期";
             $result[$i]["Color"]="#FF5151";
@@ -58,21 +62,14 @@ if(empty($result)){
         }
         
     }
-    if($mode[0]=="Dead_Line" && $mode[1]=="desc" ) usort($result,"Dead_Line_desc");
-    else if($mode[0]=="Dead_Line" && $mode[1]=="asc" ) usort($result,"Dead_Line_asc");    
-   
+
+    if($mode[0]=="Dead_Line" && $mode[1]=="desc" ) array_multisort(array_column($result,'Dead_Line'),SORT_DESC);
+    else if($mode[0]=="Dead_Line" && $mode[1]=="asc")array_multisort(array_column($result,'Dead_Line'),SORT_ASC);
+
     $result=json_encode($result);
     
 }
-function Dead_Line_desc($a,$b){
-    if($a["Dead_Line"]==$b["Dead_Line"]) return 0;
-    return ($a["Dead_Line"]>$b["Dead_Line"]) ? -1:1;
 
-}
-function Dead_Line_asc($a,$b){
-    if($a["Dead_Line"]==$b["Dead_Line"]) return 0;
-    return ($a["Dead_Line"]>$b["Dead_Line"]) ? 1:-1;
-}
 $DB=null;//釋放
 
 echo "{\"list\" : ".$result.",\"today\":\"".$today."\",\"keys\":\"".$mode[0]."\",\"act\":\"".$mode[1]."\",\"page_now\":".$page.",\"page_total\":".$pageCount."}";

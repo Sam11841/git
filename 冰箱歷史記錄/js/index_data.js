@@ -72,7 +72,7 @@ function detail(){
             .then( (response)=>{
               
                 this.food_ary = response.data.list;
-                //console.log("today "+response.data.list);
+                console.log("list",response.data.list);
                 this.today=response.data.today;
                 //console.log("today "+this.today);
                 this.field = response.data.keys;

@@ -14,7 +14,7 @@ function upload_img($file,$name){
     || ($file[$name]["type"] == "image/pjpeg")
     || ($file[$name]["type"] == "image/x-png")
     || ($file[$name]["type"] == "image/png"))
-    && ($file[$name]["size"] < 204800)   
+    && ($file[$name]["size"] < 2048000)   
     && in_array($extension, $allowedExts))
     {
        

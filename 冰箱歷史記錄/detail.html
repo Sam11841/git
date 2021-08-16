@@ -34,14 +34,15 @@
     <div></div>
     <div id="datail" class="data" >
         <div v-if="action=='detail'">
-            <img :src="picture">
+            <img :src="picture" style="height: 320px; width: 400px;">
             <p>食物名稱: {{Name}}</p>
             <p>單位: {{Unit}}</p>
             <p>冷藏方式: {{Freeze}}</p>
             <p>類別: {{Class}}</p>
             <p>置入日期: {{Input_Date}}</p>
             <p>保存期限: {{Vali_Date}}</p>
-            <p>保存期限剩餘: {{Limit}}</p>
+            <p v-if="Dead_Line=='已過期'">{{Dead_Line}}</p>
+            <p v-else>剩餘天數: {{Dead_Line}}天</p>
             <div style="text-align: right;">
                 <a :href="edit_href"><img src="./icon/edit.png"  class="icon"></a>
                 <a :href="del_href"><img src="./icon/trash.png"  class="icon"></a>

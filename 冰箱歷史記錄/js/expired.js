@@ -18,7 +18,7 @@ function detail(){
                     this.page_count = response.data.page_total;
                     this.now_page = response.data.page_now;
                 })
-                .catch(function (error) { // 请求失败处理
+                .catch(function (error) { 
                     console.log(error);
                 });
 

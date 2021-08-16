@@ -21,7 +21,7 @@ if(empty($result)){
     }
     else{
         $Dead_Line=floor($Dead_Line/86400);//60s*60m*24h=1天,以今天為基準
-        $result[0]["Dead_Line"]=$Dead_Line."天";
+        $result[0]["Dead_Line"]=$Dead_Line;
     }
     $result[0]["Show"]=$_GET["action"];
     $result=json_encode($result);
